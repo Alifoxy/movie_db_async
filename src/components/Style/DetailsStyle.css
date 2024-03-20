@@ -1,0 +1,84 @@
+.main_det_block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 1280px;
+    background-image: url("./images/background.png");
+    background-size: cover;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: "Trebuchet MS", sans-serif;
+    color: #252525;
+}
+.det_poster_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 470px;
+}
+.det_poster{
+    margin: 10px;
+    width: 470px;
+    height: 570px;
+    display: flex;
+}
+.mini_det_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 1000px;
+    padding: 10px;
+    margin:10px;
+    border-radius: 20px;
+    background: #939393;
+    border: 5px dashed orangered;
+
+}
+.inner_det_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 1100px;
+
+}
+.inner_desc_block {
+    width: 480px;
+    margin: 0 10px 0 10px;
+    box-sizing: border-box;
+    background-color: lightgray;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 18px;
+}
+.inner_overview_block{
+    width: 940px;
+    box-sizing: border-box;
+    background-color: lightgray;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 18px;
+    margin: 0 10px 10px 10px;
+}
+.genres_det_block{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0 10px 0;
+    width: 450px;
+}
+.det_title{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 30px;
+    width: 940px;
+    padding: 10px;
+    margin:10px;
+    border-radius: 20px;
+    color: gold;
+    border: 3px dashed gold;
+}

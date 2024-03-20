@@ -1,0 +1,123 @@
+body {
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(0deg, rgba(255,94,0,1) 0%, rgba(0,0,0,1) 50%);
+}
+.main_block{
+    margin-top: 20px;
+    width: 1280px;
+    background-image: url("./images/background.png");
+    background-repeat: repeat;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: "Trebuchet MS", sans-serif;
+}
+.movies_block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.inner_movie_block{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 250px;
+    height: 490px;
+    margin: 10px 5px 20px 5px;
+    padding: 10px;
+    background-color: lightgray;
+    border-radius: 20px;
+}
+
+.poster_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+}
+
+.main_poster{
+    margin: 10px;
+    width: 230px;
+    height: 330px;
+}
+
+.mini_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 300px;
+    height: 560px;
+    margin:10px;
+    background: #939393;
+    border-right: 15px dotted lightgray;
+    border-left: 15px dotted lightgray;
+
+}
+.pagination_block{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.movie_title{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: orangered;
+}
+.mini_movie_title{
+    font-size: 20px;
+    color: orangered;
+}
+.error_block{
+    color: #d50606;
+}
+.det_button{
+    margin: 10px;
+    width: 200px;
+    height:30px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(180deg, rgba(255,72,0,1) 30%, rgba(255,142,43,1) 90%);
+    color: white;
+    font-size: 20px;
+}
+.button{
+    margin: 10px;
+    width: 200px;
+    height:30px;
+    background:linear-gradient(180deg, rgba(255,187,11,1) 30%, rgba(255,222,128,1) 90%);
+    border-radius: 20px;
+    border: none;
+    color: orangered;
+    font-size: 20px;
+}
+button:disabled{
+    background: lightgray;
+    border: 2px solid gray;
+    color: #4d4d4d;
+}
+.vote{
+    display: flex;
+    width: 435px;
+    margin-top: 10px;
+    justify-content: center;
+
+}
+.user{
+    display: flex;
+    height: 50px;
+    width: 220px;
+    font-size: 25px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 40px;
+    padding: 7px;
+    border: 3px solid whitesmoke;
+}
+
