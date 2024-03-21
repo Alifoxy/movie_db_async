@@ -1,35 +1,49 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 import {movieService} from "../../services";
-import {IMovies} from "../../interfaces";
-import {useSearchParams} from "react-router-dom";
+import {IMovie, IMovieDetails} from "../../interfaces";
+import {AxiosError} from "axios";
 
-const initialState:IMovies = {
-    page: 1,
+interface IState {
+    movies: IMovie[],
+    movieByID: IMovieDetails|null,
+    total_pages:number
+    current_page:number
+}
+
+const initialState: IState = {
     total_pages: 500,
-    results:[],
+    movies:[],
+    current_page:0,
+    movieByID:null,
 };
 
-const getAll = createAsyncThunk(
+// @ts-ignore
+
+const getAll = createAsyncThunk<IMovie[], {page:string}>(
     'movieSlice/getAll',
-    async ({page}, thunkAPI) => {
+    // @ts-ignore
+    async ({page}, {rejectWithValue}) => {
         try {
             const {data} = await movieService.getAll(page);
             return data
-        } catch (error:any) {
-            return thunkAPI.rejectWithValue(error.response.data)
+        } catch (e:any) {
+            const error = e as AxiosError
+            // @ts-ignore
+            return rejectWithValue(error.response.data)
         }
 
     }
 )
-const getById = createAsyncThunk(
+const getById = createAsyncThunk<IMovie[], {movie_id:number}>(
     'movieSlice/getMovieById',
-    async ({movie_id}, thunkAPI) => {
+    async ({movie_id}, {rejectWithValue} ) => {
         try {
-            const {data} = await movieService.getAll(movie_id);
+            const {data} = await movieService.getById(movie_id);
             return data
-        } catch (error:any) {
-            return thunkAPI.rejectWithValue(error.response.data)
+        } catch (e:any) {
+            const error = e as AxiosError
+            return rejectWithValue(error.response.data)
         }
 
     }
@@ -53,7 +67,7 @@ const getGenres = createAsyncThunk(
             const {data} = await movieService.getGenres();
             return data
         } catch (error:any) {
-            return thunkAPI.rejectWithValue(error.response.data)
+            return thunkAPI.reject(error.response.data)
         }
 
     }
@@ -77,11 +91,13 @@ const movieSlice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
-            .addCase(getAll.fulfilled, (state, action) => {
-                const {page, results} = action.payload;
-                state.page = page
+            .addCase(getAll.fulfilled, (state:IMovies, action) => {
+                const {page:current_page, results} = action.payload;
+                state.page = current_page
                 state.results = results
             })
+
+
 })
 
 const {reducer: moviesReducer, actions} = movieSlice;
