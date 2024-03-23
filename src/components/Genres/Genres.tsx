@@ -1,18 +1,19 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from "react";
-import {IGenre} from "../../interfaces";
-import {movieService} from "../../services";
+import React, {FC, PropsWithChildren, useEffect} from "react";
 import {Genre} from "./Genre";
+import {genresActions} from "../../store";
+import {useAppDispatch, useAppSelector} from "../../hooks";
 
 interface IProps extends PropsWithChildren {
 }
 
 const GetGenres: FC<IProps> = () => {
-    const [genres, setGenres] = useState<IGenre[]>([])
+    const {genres} = useAppSelector(state => state.genres);
+    const dispatch = useAppDispatch();
 
 
     useEffect(() => {
-        movieService.getGenres().then(({data}) => setGenres(data.genres))
-    }, [])
+        dispatch(genresActions.getGenres())
+    }, [dispatch])
 
     return (
         <div className={'genres_block'}>

@@ -1,24 +1,25 @@
-import {FC, PropsWithChildren, useEffect, useState} from "react";
-import {IPoster} from "../../interfaces";
+import {FC, PropsWithChildren, useEffect} from "react";
 import {Poster} from "./Poster";
-import {movieService} from "../../services";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {postersActions} from "../../store";
 
 interface IProps extends PropsWithChildren {
     movieID:number
 }
 
 const Posters: FC<IProps> = ({movieID}) => {
-    const [moviePoster, setMoviePoster] = useState<IPoster[]>([])
+    const {posters} = useAppSelector(state => state.posters);
+    const dispatch = useAppDispatch();
 
-    let movie_id = movieID;
+    const movie_id = movieID;
 
     useEffect( () => {
-        movieService.getMoviePosters(movie_id).then(({data}) => setMoviePoster(data.posters))
-    }, [movie_id])
+        dispatch(postersActions.getPosters({movie_id}))
+    }, [dispatch, movie_id])
 
 
     return (
-        <Poster MoviePoster={moviePoster}/>
+        <Poster MoviePoster={posters}/>
     );
 };
 

@@ -1,32 +1,29 @@
-import {FC, PropsWithChildren, useEffect, useState} from "react";
+import {FC, PropsWithChildren, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import {IMovie} from "../../interfaces";
-import {movieService} from "../../services";
 import {Movie} from "./Movie";
 import {useSearchParams} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {moviesActions} from "../../store";
 
 interface IProps extends PropsWithChildren {
 }
 
 
 const Movies: FC<IProps> = () => {
-    const [movies, setMovies] = useState<IMovie[]>([])
-    const [currentPage, setCurrentPage] = useState({current_page:0});
-    const [totalPages] = useState({total_pages:500});
+    const {movies, current_page, total_pages} = useAppSelector(state => state.movies);
     const [query, setQuery]= useSearchParams({page: '1'})
+    
+    const dispatch = useAppDispatch();
 
     const navigate = useNavigate();
 
     const getPage = query.get('page')
-    const setPage: string = getPage !== null? getPage:'';
+    const page: string = getPage !== null? getPage:'';
 
 
     useEffect(() => {
-        movieService.getAll(setPage).then(({data}) => {
-            setMovies(data.results)
-            setCurrentPage({current_page:data.page})
-        })
-    }, [query, setPage])
+        dispatch(moviesActions.getAll({page}))
+    }, [query, page, dispatch])
 
     const prev = () => {
         setQuery(current_page => {
@@ -35,7 +32,7 @@ const Movies: FC<IProps> = () => {
             current_page.set('page', (+setCurrent - 1).toString())
             return current_page
         })
-        navigate(`${currentPage.current_page - 1}`)
+        navigate(`${current_page - 1}`)
     }
 
     const next = () => {
@@ -45,17 +42,17 @@ const Movies: FC<IProps> = () => {
             current_page.set('page', (+setCurrent + 1).toString())
             return current_page
         })
-        navigate(`${currentPage.current_page + 1}`)
+        navigate(`${current_page + 1}`)
     }
 
     return (
         <div className={'main_block'}>
             <div className={'movies_block'}>
-                {movies.map(movie => <Movie key={movie.id} Movie={movie} page={currentPage.current_page}/>)}
+                {movies.map(movie => <Movie key={movie.id} Movie={movie} page={current_page}/>)}
             </div>
             <div className={'pagination_block'}>
-                <button disabled={currentPage.current_page === 1} onClick={prev} className={'button'}>prev</button>
-                <button disabled={currentPage.current_page === totalPages.total_pages} onClick={next} className={'button'}>next</button>
+                <button disabled={current_page === 1} onClick={prev} className={'button'}>prev</button>
+                <button disabled={current_page === total_pages} onClick={next} className={'button'}>next</button>
             </div>
         </div>
     );

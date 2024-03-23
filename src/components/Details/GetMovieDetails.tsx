@@ -1,23 +1,24 @@
-import {FC, PropsWithChildren, useEffect, useState} from "react";
+import {FC, PropsWithChildren, useEffect} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {IMovieDetails} from "../../interfaces";
-import {movieService} from "../../services";
 import {MovieDetails} from "./MovieDetails";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {moviesActions} from "../../store";
 
 interface IProps extends PropsWithChildren {
 }
 
 const GetMovieDetails: FC<IProps> = () => {
-    const [movieDetails, setMovieDetails] = useState<IMovieDetails>()
+    const {movieByID} = useAppSelector(state => state.movies);
     const {movie_id} = useParams()
+    const dispatch = useAppDispatch();
 
     const navigate = useNavigate();
 
     const set_movie_id: string = movie_id !== undefined? movie_id:'';
 
     useEffect(() => {
-        movieService.getById(+set_movie_id).then(({data}) => setMovieDetails(data))
-    }, [movie_id, set_movie_id])
+        dispatch(moviesActions.getById({movie_id:+set_movie_id}))
+    }, [dispatch, set_movie_id])
 
     const back = () => {
         navigate(-1)
@@ -26,7 +27,7 @@ const GetMovieDetails: FC<IProps> = () => {
     return (
         <div className={'main_det_block'}>
             <div><button onClick={back} className={'button'}> {'<< Back'} </button></div>
-            <div>{movieDetails && <MovieDetails MovieDetails={movieDetails}/>}</div>
+            <div>{movieByID && <MovieDetails MovieDetails={movieByID}/>}</div>
         </div>
     );
 };

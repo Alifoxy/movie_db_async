@@ -10,13 +10,13 @@ const MovieDetails: FC<IProps> = ({MovieDetails}) => {
     const {id, imdb_id, title, tagline, budget, runtime, release_date, original_language, vote_average, overview} = MovieDetails;
 
     const genre_name = MovieDetails.genres.map(function(genre) {
-        return <div className={'genre_item'}>{genre.name}</div>;
+        return <div className={'genre_item'} key={genre.id}>{genre.name}</div>;
     });
     const country_name = MovieDetails.production_countries.map(function(country) {
-        return <li>{country.name}</li>;
+        return <li key={country.name}>{country.name}</li>;
     });
     const company_name = MovieDetails.production_companies.map(function(company) {
-        return <li>{company.name}</li>;
+        return <li key={company.name}>{company.name}</li>;
 
     });
 
@@ -34,7 +34,7 @@ const MovieDetails: FC<IProps> = ({MovieDetails}) => {
                 <div className={'inner_desc_block'}>
                     <div>id: {id}</div>
                     <div>imdb id: {imdb_id}</div>
-                    <div className={'movie_title'}><p>{title}</p></div>
+                    <div className={'movie_title'} ><p>{title}</p></div>
                     <div>tagline: {tagline}</div>
                     <div className={'genres_det_block'}>{genre_name}</div>
                     <div>release date: {release_date}</div>
