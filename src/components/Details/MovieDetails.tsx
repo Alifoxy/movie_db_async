@@ -7,7 +7,7 @@ interface IProps extends PropsWithChildren {
     MovieDetails: IMovieDetails
 }
 const MovieDetails: FC<IProps> = ({MovieDetails}) => {
-    const {id, imdb_id, title, tagline, budget, runtime, release_date, original_language, vote_average, overview} = MovieDetails;
+    const {id, imdb_id, title, tagline, budget, runtime, release_date, original_language, vote_average, overview, poster_path} = MovieDetails;
 
     const genre_name = MovieDetails.genres.map(function(genre) {
         return <div className={'genre_item'} key={genre.id}>{genre.name}</div>;
@@ -24,13 +24,13 @@ const MovieDetails: FC<IProps> = ({MovieDetails}) => {
         <div className={'mini_det_block'}>
             <h3 className={'det_title'}> Description</h3>
             <div className={'inner_det_block'}>
+                <div>
+                    <img  className={'det_poster_div'} src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={'poster'}/>
+                </div>
 
                 {/*alternate way to get poster*/}
-                {/*<div>*/}
-                {/*    <img  className={'det_poster_div'} src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={'poster'}/>*/}
-                {/*</div>*/}
+                {/*<div className={'det_poster_div'}><Posters movieID={id}/></div>*/}
 
-                <div className={'det_poster_div'}><Posters movieID={id}/></div>
                 <div className={'inner_desc_block'}>
                     <div>id: {id}</div>
                     <div>imdb id: {imdb_id}</div>

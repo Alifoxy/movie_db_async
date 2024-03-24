@@ -63,7 +63,7 @@ const getMoviesByGenreId = createAsyncThunk<IMovies, {with_genres:string|undefin
     }
 )
 
-const getMoviesByTitle = createAsyncThunk<IMovies, {query:string}>(
+const getMoviesByTitle = createAsyncThunk<IMovies, {query:string|undefined}>(
     'movieSlice/getByTitle',
     async ({query}, thunkAPI) => {
         try {
