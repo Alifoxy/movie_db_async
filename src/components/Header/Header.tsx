@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <div className={css.Header}>
             <NavLink to={'movies'}>Movies</NavLink>
-            <NavLink to={'genres'}>Genres</NavLink>
+            <NavLink to={'search'}>Search</NavLink>
             <div className={'user'}>
                 <div>Hello, user!</div>
                 <img src={require('../Style/images/user_icon.png')} alt={'user icon'} width={50} height={50}/>

@@ -6,7 +6,9 @@ import {IMovie, IMovieDetails, IMovies} from "../../interfaces";
 interface IState {
     movies: IMovie[],
     moviesByGenre:IMovie[],
+    moviesByTitle:IMovie[],
     movieByID: IMovieDetails|null,
+    title:string,
     total_pages:number,
     current_page:number
 }
@@ -14,7 +16,9 @@ interface IState {
 const initialState: IState = {
     movies:[],
     moviesByGenre:[],
+    moviesByTitle:[],
     movieByID:null,
+    title:'',
     total_pages: 500,
     current_page:0,
 
@@ -59,6 +63,20 @@ const getMoviesByGenreId = createAsyncThunk<IMovies, {with_genres:string|undefin
     }
 )
 
+const getMoviesByTitle = createAsyncThunk<IMovies, {query:string}>(
+    'movieSlice/getByTitle',
+    async ({query}, thunkAPI) => {
+        try {
+            const {data} = await movieService.getMoviesByTitle(query);
+            return data
+        } catch (error:any) {
+            return thunkAPI.rejectWithValue(error.response.data)
+        }
+
+    }
+)
+
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -77,6 +95,10 @@ const movieSlice = createSlice({
                 const {results} = action.payload;
                 state.moviesByGenre = results
             })
+            .addCase(getMoviesByTitle.fulfilled, (state, action) => {
+                const {results} = action.payload;
+                state.moviesByTitle = results
+            })
 
 
 })
@@ -87,7 +109,8 @@ const moviesActions = {
     ...actions,
     getAll,
     getById,
-    getMoviesByGenreId
+    getMoviesByGenreId,
+    getMoviesByTitle
 }
 
 export {
