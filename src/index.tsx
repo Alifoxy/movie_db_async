@@ -13,8 +13,8 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <Provider store={store}>
-        <RouterProvider router={router}/>
+    <Provider store={store} >
+        <RouterProvider router={router} />
     </Provider>
 );
 

@@ -2,7 +2,7 @@ import React, {FC, PropsWithChildren, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../store";
-import {MovieByTitle} from "./MovieByTitle";
+import {MovieByParams} from "./MovieByParams";
 
 interface IProps extends PropsWithChildren {
 }
@@ -22,7 +22,8 @@ const GetMoviesByTitle: FC<IProps> = () => {
     return (
         <div className={'main_block'}>
             <div className={'movies_block'}>
-                {moviesByTitle.map(movie => <MovieByTitle key={movie.id} Movie={movie}/>)}
+                {moviesByTitle.map(movie => <MovieByParams key={movie.id} Movie={movie}/>)}
+                <h3>Sorry, we could not find movies with title {query}</h3>
             </div>
         </div>
     );

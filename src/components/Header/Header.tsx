@@ -7,7 +7,7 @@ import '../Style/images/user_icon.png'
 const Header = () => {
     return (
         <div className={css.Header}>
-            <NavLink to={'movies'}>Movies</NavLink>
+            <NavLink to={'movies/1'}>Movies</NavLink>
             <NavLink to={'search'}>Search</NavLink>
             <div className={'user'}>
                 <div>Hello, user!</div>

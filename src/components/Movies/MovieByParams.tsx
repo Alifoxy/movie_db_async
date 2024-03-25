@@ -8,7 +8,7 @@ interface IProps extends PropsWithChildren {
     Movie:IMovie
 
 }
-const MovieByTitle: FC<IProps> = ({Movie}) => {
+const MovieByParams: FC<IProps> = ({Movie}) => {
     const {title, vote_average, poster_path} = Movie;
 
     const toDetails = () => {
@@ -34,4 +34,4 @@ const MovieByTitle: FC<IProps> = ({Movie}) => {
     );
 };
 
-export {MovieByTitle};
+export {MovieByParams};

@@ -1,19 +1,19 @@
 import React, {FC, PropsWithChildren} from "react";
 import {useNavigate} from "react-router-dom";
 import {IMovie} from "../../interfaces";
-import {SetRating} from "../../hooks";
+import {SetRating, useAppSelector} from "../../hooks";
 
 
 interface IProps extends PropsWithChildren {
     Movie:IMovie
-    page:number
 }
-const Movie: FC<IProps> = ({Movie,page}) => {
+const Movie: FC<IProps> = ({Movie}) => {
+    const {current_page} = useAppSelector(state => state.movies);
     const {title, vote_average, poster_path} = Movie;
 
     const toDetails = () => {
         const mov_id = Movie.id;
-        navigate(`${page}/details/${mov_id}`)
+        navigate(`${current_page}/details/${mov_id}`)
     };
 
     const navigate = useNavigate()

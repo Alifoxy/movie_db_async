@@ -1,6 +1,6 @@
 import React, {FC, PropsWithChildren, useEffect} from "react";
 import {useParams} from "react-router-dom";
-import {MovieByGenre} from "./MovieByGenre";
+import {MovieByParams} from "./MovieByParams";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../store";
 
@@ -23,7 +23,7 @@ const GetMoviesByGenre: FC<IProps> = () => {
     return (
         <div className={'main_block'}>
             <div className={'movies_block'}>
-                {moviesByGenre.map(movie => <MovieByGenre key={movie.id} Movie={movie}/>)}
+                {moviesByGenre.map(movie => <MovieByParams key={movie.id} Movie={movie}/>)}
             </div>
         </div>
     );

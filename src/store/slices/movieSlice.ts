@@ -25,7 +25,7 @@ const initialState: IState = {
 };
 
 
-const getAll = createAsyncThunk<IMovies, {page:string}>(
+const getAll = createAsyncThunk<IMovies, {page:string|undefined}>(
     'movieSlice/getAll',
     async ({page}, thunkAPI) => {
         try {
