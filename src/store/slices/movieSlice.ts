@@ -8,7 +8,6 @@ interface IState {
     moviesByGenre:IMovie[],
     moviesByTitle:IMovie[],
     movieByID: IMovieDetails|null,
-    title:string,
     total_pages:number,
     current_page:number
 }
@@ -18,7 +17,6 @@ const initialState: IState = {
     moviesByGenre:[],
     moviesByTitle:[],
     movieByID:null,
-    title:'',
     total_pages: 500,
     current_page:0,
 

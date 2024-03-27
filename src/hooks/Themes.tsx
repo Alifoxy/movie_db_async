@@ -12,3 +12,4 @@ export const darkTheme = {
     gradient: 'linear-gradient(#091236, #1E215D)',
 }
 
+

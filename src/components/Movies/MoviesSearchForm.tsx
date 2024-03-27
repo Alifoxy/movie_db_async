@@ -1,35 +1,31 @@
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {useAppSelector} from "../../hooks";
-import * as queryString from "querystring";
 import {useEffect, useState} from "react";
 
 
 const MoviesForm = () => {
-    const {handleSubmit,register,reset} = useForm();
-    const [query, setQuery] = useSearchParams({query:''})
+    const {handleSubmit,reset} = useForm();
+    const [,setQuery] = useSearchParams({query:''})
+    const [title, setTitle]=useState('')
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if (title){
-    //         setQuery(title.toString)
-    //     }
-    // }, [title])
+    useEffect(() => {
+        setQuery(title)
+    }, [setQuery, title])
 
     const handleChange = (event:any) => {
-        setQuery('query')
-
+        setTitle(event.target.value)
     }
 
     const search: SubmitHandler<any> = () => {
         reset()
-        navigate(`${query}`)
+        navigate(`${title}`)
     };
 
     return (
         <form onSubmit={handleSubmit(search)}>
-            <input type="text" placeholder={'search by title'} {...register('query')} onChange={handleChange}/>
-            <button className={'button'} disabled={}>{'search'}</button>
+            <input type="text" placeholder={'search by title'} value={title} onChange={handleChange}/>
+            <button className={'button'} disabled={!title}>{'search'}</button>
         </form>
     );
 };
