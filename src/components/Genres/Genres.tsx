@@ -17,9 +17,11 @@ const GetGenres: FC<IProps> = () => {
 
     return (
         <div className={'genres_block'}>
-            <h3 className={'gen_title'}>Get Movies By Genre</h3>
+            <h4 className={'gen_title'}>Here you can find movies by genre or title</h4>
             <div className={'inner_gen_block'}>
-                {genres.map(genre => <Genre key={genre.id} SetGenre={genre}/>)}
+                <div className={'genres'}>
+                    {genres.map(genre => <Genre key={genre.id} SetGenre={genre}/>)}
+                </div>
             </div>
         </div>
     );

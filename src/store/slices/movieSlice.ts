@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled} from "@reduxjs/toolkit";
 
 import {movieService} from "../../services";
 import {IMovie, IMovieDetails, IMovies} from "../../interfaces";
@@ -9,7 +9,7 @@ interface IState {
     moviesByTitle:IMovie[],
     movieByID: IMovieDetails|null,
     total_pages:number,
-    current_page:number
+    current_page:number,
 }
 
 const initialState: IState = {
@@ -97,6 +97,9 @@ const movieSlice = createSlice({
                 const {results} = action.payload;
                 state.moviesByTitle = results
             })
+            // .addMatcher(!isFulfilled(getMoviesByTitle), (state) => {
+            //     state.error = 'Movies not found'
+            // })
 
 
 })

@@ -6,34 +6,25 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {router} from "./router";
 import {store} from "./store";
-import {ThemeSwitching} from "./components";
-import {ThemeSwitcherProvider} from "react-css-theme-switcher";
+// import {ThemeSwitching} from "./components";
+// import {ThemeSwitcherProvider} from "react-css-theme-switcher";
+// import {ThemeProvider} from "@mui/material";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-const themes = {
-    light: './components/Style/themes/light.css',
-    dark: './components/Style/themes/dark.css',
-};
-
-const App = () => {
-    return (
-        <ThemeSwitcherProvider
-            insertionPoint={document.getElementById('background')}
-            themeMap={themes}
-            defaultTheme={'dark'}
-        >
-            <ThemeSwitching/>
-        </ThemeSwitcherProvider>
-    );
-};
+// const themes = {
+//     light: '.public/light.css',
+//     dark: '.public/dark.css',
+// };
 
 root.render(
         <Provider store={store} >
             <RouterProvider router={router} />
-            <App/>
         </Provider>
+
+
+
 );
 
 

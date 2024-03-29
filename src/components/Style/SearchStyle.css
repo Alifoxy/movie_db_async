@@ -28,11 +28,20 @@
     background-color: lightgray;
     width: 1170px;
     height: 120px;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     padding: 10px;
     border-radius: 20px;
+}
+.genres{
+    margin-left: 10px;
+    display: flex;
+    height: 120px;
+    width: 1100px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .genre_item{
     display: flex;
@@ -51,3 +60,26 @@
     border: none;
     height: 30px;
 }
+
+.search_div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 1290px;
+    height: 40px;
+    background: orangered;
+    padding: 5px;
+    margin-top: 20px;
+    border-top: 10px dotted whitesmoke;
+    border-bottom: 10px dotted  whitesmoke;
+}
+
+input{
+    width: 1000px;
+    height: 20px;
+    border-radius: 20px;
+    border: none;
+    padding: 4px 4px 4px 10px;
+
+}
+

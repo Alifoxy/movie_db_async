@@ -1,0 +1,17 @@
+body {
+    background:linear-gradient(180deg, rgba(255,187,11,1) 30%, rgba(255,222,128,1) 90%);
+}
+.det_button{
+    background: linear-gradient(180deg, rgba(255,72,0,1) 30%, rgba(255,142,43,1) 90%);
+}
+.button{
+    background:linear-gradient(180deg, rgba(255,187,11,1) 30%, rgba(255,222,128,1) 90%);
+    color: #008144;
+}
+
+.movie_title{
+    color: #00562b;
+}
+.mini_movie_title{
+    color: #00562b;
+}

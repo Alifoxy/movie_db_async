@@ -1,11 +1,13 @@
 import {ChangeEvent, FC, PropsWithChildren, useEffect} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
-// import { createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import {Movie} from "./Movie";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../store";
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
+import {ThemeProvider} from "@mui/material";
+import css from "../Style/PaginationStyle.module.css"
 
 
 interface IProps extends PropsWithChildren {
@@ -37,28 +39,33 @@ const Movies: FC<IProps> = () => {
         navigate(`${current_page}`)
     };
 
-    // const pag_theme = createTheme({
-    //     palette:{
-    //         primary:{
-    //             main: '#ffbc28',
-    //             contrastText: 'orangered'
-    //         }
-    //     }
-    //
-    // });
+    const theme = createTheme({
+        palette:{
+            primary:{
+                main:'#f3aa00',
+                // #ffbc28
+                contrastText: 'white',
+
+            }
+        }
+    });
+
+
 
 
     return (
+        <ThemeProvider theme={theme}>
             <div className={'main_block'}>
                 <div className={'movies_block'}>
                     {movies.map(movie => <Movie key={movie.id} Movie={movie}/>)}
                 </div>
                 <div className={'pagination_block'}>
-                    <Stack spacing={2}>
-                        <Pagination count={total_pages} page={current_page} color={'secondary'} className={'pag'} onChange={handleChange} />
+                    <Stack spacing={2} >
+                        <Pagination count={total_pages} page={current_page} color='primary' size="large" className={'pag'}  onChange={handleChange}/>
                     </Stack>
                 </div>
             </div>
+        </ThemeProvider>
 
     );
 };

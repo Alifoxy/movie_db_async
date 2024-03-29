@@ -1,6 +1,6 @@
 import {ThemeSwitcherProvider, useThemeSwitcher } from 'react-css-theme-switcher';
 import React, {ChangeEvent, FC, PropsWithChildren, useEffect, useState} from "react";
-import Switch from 'react-switch';
+import Switch from '@mui/material/Switch'
 
 interface IProps extends PropsWithChildren {
 }
@@ -24,7 +24,7 @@ const ThemeSwitching: FC<IProps> = () => {
     //     });
     // };
 
-    const toggleDarkMode = (checked:boolean) => {
+    const toggleDarkMode = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
         switcher({ theme: checked ? themes.dark : themes.light });
         setIsDark(checked)
         // setIsDark (checked => {

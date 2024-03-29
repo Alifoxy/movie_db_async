@@ -1,7 +1,7 @@
 import {Outlet} from "react-router-dom";
 import {Header} from "../components";
 import "../components/Style/MainStyle.css"
-import "../components/Style/GenresStyle.css"
+import "../components/Style/SearchStyle.css"
 import "../components/Style/DetailsStyle.css"
 import {ThemeProvider} from "styled-components";
 import {useState} from "react";

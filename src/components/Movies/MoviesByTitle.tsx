@@ -13,22 +13,19 @@ const GetMoviesByTitle: FC<IProps> = () => {
     const {query} = useParams()
     const dispatch = useAppDispatch()
 
-
     useEffect(() => {
         dispatch(moviesActions.getMoviesByTitle({query}))
     }, [dispatch, query])
 
     const byTitle = () => {
-        let mov
-        if (!moviesByTitle){
-            mov =  <h3>Sorry, we could not find movies with title {query}</h3>
+        let movies
+        if (!moviesByTitle.length){
+            movies =  <h2 className={'error_title'}>Sorry, we were unable to find movies with title {query} :(</h2>
         }else {
-            mov = moviesByTitle.map(movie => <MovieByParams key={movie.id} Movie={movie}/>)
-
+            movies = moviesByTitle.map(movie => <MovieByParams key={movie.id} Movie={movie}/>)
         }
-        return mov
+        return movies
     }
-
 
     return (
         <div className={'main_block'}>
