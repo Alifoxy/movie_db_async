@@ -26,7 +26,7 @@ const MoviesForm = () => {
         <div className={'search_div'}>
             <form onSubmit={handleSubmit(search)}>
                 <input type="text" placeholder={'search by title'} value={title} onChange={handleChange}/>
-                <button className={'button'} disabled={!title}>{title?'search':'write movie title'}</button>
+                <button className={'button'}  disabled={!title}>{title?'search':'write movie title'}</button>
             </form>
         </div>
 

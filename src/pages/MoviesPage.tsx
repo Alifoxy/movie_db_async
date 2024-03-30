@@ -2,7 +2,7 @@ import {Movies} from "../components";
 
 const MoviesPage = () => {
     return (
-            <div>
+            <div className={'outer_div'}>
                 <Movies/>
             </div>
 

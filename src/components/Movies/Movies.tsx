@@ -7,7 +7,6 @@ import {moviesActions} from "../../store";
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import {ThemeProvider} from "@mui/material";
-import css from "../Style/PaginationStyle.module.css"
 
 
 interface IProps extends PropsWithChildren {
@@ -40,6 +39,9 @@ const Movies: FC<IProps> = () => {
     };
 
     const theme = createTheme({
+        components:{
+
+        },
         palette:{
             primary:{
                 main:'#f3aa00',

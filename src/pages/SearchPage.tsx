@@ -4,7 +4,7 @@ import {MoviesForm} from "../components";
 
 const SearchPage = () => {
     return (
-        <div>
+        <div className={'outer_div'}>
             <GetGenres/>
             <MoviesForm/>
             <Outlet/>
