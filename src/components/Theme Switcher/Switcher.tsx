@@ -1,12 +1,8 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import Switch from "@mui/material/Switch";
-import {useThemeSwitcher} from "react-css-theme-switcher";
-import {moviesActions} from "../../store";
-import {Simulate} from "react-dom/test-utils";
 import {ThemeContext} from "../../hoc/ContextProvider";
 import {ThemeProvider} from "../../hoc/ContextProvider";
 import {darkTheme, lightTheme} from "./themes/themes";
-import styled from "styled-components";
 
 
 const Switcher = () => {
@@ -48,7 +44,7 @@ const Switcher = () => {
 
 
     return (
-            <ThemeProvider  {...theme === 'light'? lightTheme: darkTheme} >
+            <ThemeProvider  {...theme === 'dark'? lightTheme: darkTheme} >
                 <div className={'switcher_div'}>
                     <h5>Current theme: {theme}</h5>
                     <Switch onChange={toggleTheme} checked={!isDark} className={'switch'}/>

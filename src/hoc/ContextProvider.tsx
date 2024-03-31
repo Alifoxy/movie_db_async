@@ -6,7 +6,7 @@ interface IProps extends PropsWithChildren {
 
 }
 const ThemeProvider:FC<IProps> = ({ children }) => {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('dark');
     const [isDark, setIsDark] = useState(true);
 
     const toggleTheme = () => {
