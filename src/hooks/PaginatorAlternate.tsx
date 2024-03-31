@@ -6,7 +6,7 @@ import {moviesActions} from "../store";
 interface IProps extends PropsWithChildren {
 }
 
-const Paginator: FC<IProps> = () => {
+const PaginatorAlternate: FC<IProps> = () => {
     const {current_page, total_pages} = useAppSelector(state => state.movies);
     const [query, setQuery]= useSearchParams({page: '1'})
     const {page} = useParams()
@@ -43,4 +43,4 @@ const Paginator: FC<IProps> = () => {
         </div>
     );
 };
-export {Paginator}
+export {PaginatorAlternate}
