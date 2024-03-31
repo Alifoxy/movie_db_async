@@ -12,6 +12,7 @@ const ThemeProvider:FC<IProps> = ({ children }) => {
     const toggleTheme = () => {
         setTheme(theme ==='light' ? 'dark' : 'light');
         setIsDark(!isDark)
+        console.log('It worked!')
     };
 
     return (
