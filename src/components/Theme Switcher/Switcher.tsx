@@ -45,15 +45,10 @@ const Switcher = () => {
         //     light: lightTheme,
         //     dark: '.public/dark.css',
         // };
-        const themes = {
-            light: '../public/light.css',
-            dark: '../public/dark.css',
-        };
-
 
 
     return (
-            <ThemeProvider {...{ theme: 'light' ? themes.light : themes.dark }} >
+            <ThemeProvider  {...theme === 'light'? lightTheme: darkTheme} >
                 <div className={'switcher_div'}>
                     <h5>Current theme: {theme}</h5>
                     <Switch onChange={toggleTheme} checked={!isDark} className={'switch'}/>

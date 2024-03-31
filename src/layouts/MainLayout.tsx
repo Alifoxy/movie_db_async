@@ -4,13 +4,8 @@ import "../components/Style/MainStyle.css"
 import "../components/Style/SearchStyle.css"
 import "../components/Style/DetailsStyle.css"
 import React from "react";
-import styled from "styled-components";
 import {ThemeProvider} from "../hoc/ContextProvider";
-// import {ThemeSwitcher} from "../components";
-// import {ThemeProvider} from "styled-components";
-// import {ThemeSwitcherProvider} from "react-css-theme-switcher";
-// import {ThemeProvider} from "@mui/material";
-// import Switch from "@mui/material/Switch";
+import {Wrapper} from "../components/Theme Switcher/themes/StyledComponents";
 
 
 const MainLayout = () => {
@@ -42,10 +37,12 @@ const MainLayout = () => {
 
     return (
         <ThemeProvider>
+            <Wrapper>
                 <div className={'outer_div'}>
                     <Header/>
                     <Outlet/>
                 </div>
+            </Wrapper>
         </ThemeProvider>
     );
 
